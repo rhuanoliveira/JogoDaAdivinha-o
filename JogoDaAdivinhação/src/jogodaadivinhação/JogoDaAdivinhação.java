@@ -27,27 +27,31 @@ public class JogoDaAdivinhação {
                
         do{
         JOptionPane.showMessageDialog(null, "O jogo a seguir consiste em acertar um número escolhido pela "
-                                            + "\n máquina dentre um certo intervalo que ficará à escolha do usuário!",
-                                            "MENSAGEM", JOptionPane.PLAIN_MESSAGE);
+                                            + "\n máquina dentre um certo intervalo que ficará à escolha do usuário!"
+                                            + "\n\n Seu número de tentativas será SEMPRE 5, portanto use bem o intervalo"
+                                            + "\n máximo para escolha",
+                                              "MENSAGEM", JOptionPane.PLAIN_MESSAGE);
+                                            
         verificador = (String) JOptionPane.showInputDialog("Digite o intervalo máximo para o número escolhido");
             if (verificador == null) {
             /*
             * se clicar no botão Cancel, mostrar uma mensagem de Game Over
             * e sair do loop para finalizar o programa
             */
-            JOptionPane.showMessageDialog(null,"Que pena!\nVocê desistiu do jogo! :( ");
+            JOptionPane.showMessageDialog(null,"            Que pena!\nVocê desistiu do jogo! :( ");
             jogo = 0;
             }
             
             if (verificador !=null ){
                     resposta = Integer.parseInt(verificador);
                     numeroAleatorio = random.nextInt (resposta);
-                    
+                    Operações op = new Operações();
+                    op.NumeroAdivinhado(resposta,numeroAleatorio);
         }
-            Operações op = new Operações();
-            op.NumeroAdivinhado(resposta,numeroAleatorio);
-                    
+            
+          JOptionPane.showMessageDialog(null, "            Jogo finalizado com sucesso! ","MENSAGEM", JOptionPane.PLAIN_MESSAGE);
         }
+        
         while(jogo == 1);
         
         }
