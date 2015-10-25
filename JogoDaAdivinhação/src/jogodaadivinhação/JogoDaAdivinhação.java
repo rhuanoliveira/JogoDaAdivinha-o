@@ -24,7 +24,10 @@ public class JogoDaAdivinhação {
         String verificador;
         int resposta=0;
         int jogo=0;
-               
+        Object[] opcoes = { "SIM ", "NÃO" };
+        Object jogarnovamente = null;
+        
+        while (jogarnovamente == null || jogarnovamente.equals("NÃO")){      
         do{
         JOptionPane.showMessageDialog(null, "O jogo a seguir consiste em acertar um número escolhido pela "
                                             + "\n máquina dentre um certo intervalo que ficará à escolha do usuário!"
@@ -47,13 +50,17 @@ public class JogoDaAdivinhação {
                     numeroAleatorio = random.nextInt (resposta);
                     Operações op = new Operações();
                     op.NumeroAdivinhado(resposta,numeroAleatorio);
+        }  
         }
-            
-          JOptionPane.showMessageDialog(null, "            Jogo finalizado com sucesso! ","MENSAGEM", JOptionPane.PLAIN_MESSAGE);
-        }
-        
         while(jogo == 1);
-        
+        jogarnovamente = JOptionPane.showInputDialog(null,
+                            "Deseja finalizar o programa?",
+                            "Finalização",
+                            JOptionPane.PLAIN_MESSAGE,
+                            null,
+                            opcoes,
+                            "não");
+    }
         }
 }
         
